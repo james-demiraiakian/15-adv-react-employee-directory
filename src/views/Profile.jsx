@@ -1,15 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { useProfile } from '../context/ProfileContext';
 
 export default function Profile() {
+  const { profile } = useProfile();
+  const { name, email, bio, birthday } = profile;
+  console.log(profile);
   return (
-    <div>
-      <h4>Welcome [EMPLOYEE NAME]</h4>
-      <div>Name: (user.name)</div>
-      <div>Email: (user.email)</div>
-      <div>Birthday: (user.birthday)</div>
-      <div>Bio: (user.bio)</div>
-      <Link to="/profile/edit">Edit Profile</Link>
-    </div>
+    <>
+      {name ? (
+        <div>
+          <h4>Welcome [EMPLOYEE NAME]</h4>
+          <div>Name: {name}</div>
+          <div>Email: {email}</div>
+          <div>Birthday: {birthday}</div>
+          <div>Bio: {bio}</div>
+          <Link to="/profile/edit">Edit Profile</Link>
+        </div>
+      ) : (
+        <Link to="/new-profile">Create a new profile</Link>
+      )}
+    </>
   );
 }

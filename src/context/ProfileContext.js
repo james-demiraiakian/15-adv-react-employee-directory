@@ -5,7 +5,6 @@ import { getUser } from '../services/users';
 const ProfileContext = createContext();
 
 const ProfileProvider = ({ children }) => {
-  //   const { name, email, bio, birthday } = userProfile;
   const { user } = getUser();
   const [profile, setProfile] = useState(
     name ? { name: '', email: '', bio: '', birthday: '' } : {}
@@ -22,7 +21,7 @@ const ProfileProvider = ({ children }) => {
       });
     };
     fetchProfile();
-  }, [user.email]);
+  }, []);
 
   const value = { profile, setProfile };
 
