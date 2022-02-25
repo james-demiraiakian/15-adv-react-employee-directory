@@ -16,7 +16,7 @@ const UserProvider = ({ children }) => {
 const useUser = () => {
   const context = useContext(UserContext);
   if (context === undefined) {
-    throw new Error('Error with useUser in wrong location');
+    throw new Error('useUser must be rendered inside a UserProvider');
   }
   return context;
 };

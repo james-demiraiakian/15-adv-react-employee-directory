@@ -15,19 +15,19 @@ function App() {
   return (
     <div className="App">
       <UserProvider>
-        <ProfileProvider>
-          <BrowserRouter>
-            <Header />
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route exact path="/login">
-                <Login />
-              </Route>
-              <Route exact path="/register">
-                <Register />
-              </Route>
+        <BrowserRouter>
+          <Header />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/register">
+              <Register />
+            </Route>
+            <ProfileProvider>
               <ProtectedRoute exact path="/profile">
                 <Profile />
               </ProtectedRoute>
@@ -37,9 +37,9 @@ function App() {
               <ProtectedRoute exact path="/profile/edit">
                 <EditProfile />
               </ProtectedRoute>
-            </Switch>
-          </BrowserRouter>
-        </ProfileProvider>
+            </ProfileProvider>
+          </Switch>
+        </BrowserRouter>
       </UserProvider>
     </div>
   );
