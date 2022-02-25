@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useUser } from '../context/UserContext';
+// import { useUser } from '../context/UserContext';
 import { signUpUser } from '../services/users';
 
 export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { setUser } = useUser();
+  //   const { setUser } = useUser();
   const [regState, setRegState] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -15,8 +15,9 @@ export default function Register() {
     if (password.length < 8) {
       alert('Password must be 8 or more characters long');
     } else {
-      await signUpUser(email, password);
-      setUser(email, password);
+      const resp = await signUpUser(email, password);
+      console.log(resp);
+      //   setUser(email, password);
       setRegState(true);
     }
   };
