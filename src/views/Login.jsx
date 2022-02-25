@@ -6,14 +6,13 @@ import { signInUser } from '../services/users';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { user, setUser } = useUser();
+  const { setUser } = useUser();
   const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setUser(email, password);
     await signInUser(email, password);
-    console.log(user);
     history.replace('/profile');
   };
   return (
@@ -30,7 +29,6 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button>Submit</button>
-        {/* Button checks data, then redirects to profile page*/}
       </form>
     </div>
   );

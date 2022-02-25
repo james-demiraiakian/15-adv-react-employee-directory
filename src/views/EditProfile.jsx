@@ -5,13 +5,10 @@ export default function EditProfile() {
   const {
     profile,
     profile: { email },
-    setProfile,
   } = useProfile();
   const [name, setName] = useState(profile.name);
   const [bio, setBio] = useState(profile.bio);
   const [birthday, setBirthday] = useState(profile.birthday);
-
-  console.log(profile);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

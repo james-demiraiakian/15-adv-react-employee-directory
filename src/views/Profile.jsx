@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useProfile } from '../context/ProfileContext';
 
 export default function Profile() {
   const { profile } = useProfile();
   const { name, email, bio, birthday } = profile;
-  console.log(profile);
   return (
     <>
       {name ? (

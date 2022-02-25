@@ -1,11 +1,9 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { getProfile } from '../services/profiles';
-import { getUser } from '../services/users';
 
 const ProfileContext = createContext();
 
 const ProfileProvider = ({ children }) => {
-  const { user } = getUser();
   const [profile, setProfile] = useState(
     name ? { name: '', email: '', bio: '', birthday: '' } : {}
   );

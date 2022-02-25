@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useProfile } from '../context/ProfileContext';
 import { useUser } from '../context/UserContext';
-import { createProfile, getProfile } from '../services/profiles';
+import { createProfile } from '../services/profiles';
 
 export default function NewProfile() {
   const history = useHistory();
