@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useProfile } from '../context/ProfileContext';
 import { useUser } from '../context/UserContext';
-import { getProfile } from '../services/profiles';
+import { createProfile, getProfile } from '../services/profiles';
 
 export default function NewProfile() {
   const { setProfile } = useProfile();
@@ -14,9 +14,10 @@ export default function NewProfile() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await setProfile(name, email, bio, birthday);
-    const resp = await getProfile();
+    setProfile({ name, email, bio, birthday });
+    const resp = await createProfile({ name, email, bio, birthday });
     console.log(resp);
+    console.log(await getProfile());
   };
 
   return (
