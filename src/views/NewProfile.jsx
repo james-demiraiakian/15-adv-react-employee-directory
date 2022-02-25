@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useProfile } from '../context/ProfileContext';
 import { useUser } from '../context/UserContext';
 import { createProfile, getProfile } from '../services/profiles';
 
 export default function NewProfile() {
+  const history = useHistory();
   const { setProfile } = useProfile();
   const [name, setName] = useState('');
   const [bio, setBio] = useState('');
@@ -15,9 +17,8 @@ export default function NewProfile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setProfile({ name, email, bio, birthday });
-    const resp = await createProfile({ name, email, bio, birthday });
-    console.log(resp);
-    console.log(await getProfile());
+    await createProfile({ name, email, bio, birthday });
+    history.replace('/profile');
   };
 
   return (
@@ -32,7 +33,6 @@ export default function NewProfile() {
         <label>Bio: </label>
         <input type="textarea" value={bio} onChange={(e) => setBio(e.target.value)} />
         <button type="submit">Create Profile</button>
-        {/* Redirect to profile on submit */}
       </form>
     </div>
   );
